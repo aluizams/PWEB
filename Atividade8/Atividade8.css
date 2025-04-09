@@ -1,0 +1,32 @@
+header {
+    background-color: pink;
+    color: #000;
+    padding: 10px 20px;
+    
+}
+
+body{
+    font-family: "Segoe UI", 'Segoe UI', Tahoma;
+}
+
+button{
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 1px plum;
+}
+
+form{
+    padding: 10px 200px;
+}
+
+p{
+    padding: 10px 100px; 
+}
+
+footer {
+    background-color: palevioletred;
+    color: #ffffff;
+   
+    text-align:center;
+    
+}
+

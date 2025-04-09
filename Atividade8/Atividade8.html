@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 8</title>
+    <link rel="stylesheet" href="Atividade8.css"> 
+</head>
+<body>
+    <header><h1>Pesquisa de Opinião</h1></header>
+    <br><br>
+    <form id="pesquisa">
+        <label for="idade">Idade:</label>
+        <input type="number" id="idade" name="idade" required min="1"><br><br>
+
+        <label for="genero">Sexo:</label>
+        <select id="genero" name="genero" required>
+            <option value="">Selecione...</option>
+            <option value="masculino">Masculino</option>
+            <option value="feminino">Feminino</option>
+            <option value="outro">Outro</option>
+        </select><br><br>
+
+        <input type="radio" id="otimo" name="opiniao" value="4" checked />
+        <label for="otimo">4 - Ótimo</label><br>
+        <input type="radio" id="bom" name="opiniao" value="3" />
+        <label for="bom">3 - Bom</label><br>
+        <input type="radio" id="regular" name="opiniao" value="2" />
+        <label for="regular">2 - Regular</label><br>
+        <input type="radio" id="pessimo" name="opiniao" value="1" />
+        <label for="pessimo">1 - Pessimo</label><br>
+
+        <br><br>
+        <button type="submit" id="enviar">Enviar</button>    
+    </form>
+
+    <div id="resultado"></div>
+
+    <script>
+        const respostas = [];
+
+        document.getElementById("pesquisa").addEventListener("submit", function(event) {
+            event.preventDefault(); 
+
+            const idade = parseInt(document.getElementById("idade").value);
+            const genero = document.getElementById("genero").value;
+
+            const radios = document.getElementsByName("opiniao");
+            let opiniao;
+            for (let i = 0; i < radios.length; i++) {
+                if (radios[i].checked) {
+                    opiniao = radios[i].value;
+                    break; 
+                }
+            }
+
+            respostas.push({ idade, genero, opiniao });
+
+            atualizaResult();
+        });
+
+        function atualizaResult() {
+            let somaIdades = 0;
+            let idadeMaisVelha = 0;
+            let idadeMaisNova = Infinity; 
+            let totalOtimo = 0;
+            let totalBom = 0;
+            let totalMasculino = 0;
+            let totalFeminino = 0;
+            let totalOutro = 0;
+
+            for (const resposta of respostas) {
+                somaIdades += resposta.idade;
+                if (resposta.idade > idadeMaisVelha) {
+                    idadeMaisVelha = resposta.idade;
+                }
+                if (resposta.idade < idadeMaisNova) {
+                    idadeMaisNova = resposta.idade;
+                }
+
+                if (resposta.opiniao === "4") totalOtimo++;
+                if (resposta.opiniao === "3") totalBom++;
+                if (resposta.genero === "masculino") totalMasculino++;
+                if (resposta.genero === "feminino") totalFeminino++;
+                if (resposta.genero === "outro") totalOutro++;
+            }
+
+            const totalRespostas = respostas.length;
+            const mediaIdade = somaIdades / totalRespostas;
+            const porcentagemOtimo = ((totalOtimo / totalRespostas) * 100).toFixed(2);
+            const porcentagemBom = ((totalBom / totalRespostas) * 100).toFixed(2);
+
+            
+            const resultadosDiv = document.getElementById("resultado");
+            resultadosDiv.innerHTML = `
+                <p>Total de Respostas: ${totalRespostas}</p>
+                <p>Média de Idade: ${mediaIdade ? mediaIdade.toFixed(2) : 0}</p>
+                <p>Idade da Pessoa Mais Velha: ${idadeMaisVelha ? idadeMaisVelha : 0}</p>
+                <p>Idade da Pessoa Mais Nova: ${idadeMaisNova ? idadeMaisNova : 0}</p>
+                <p>Porcentagem de "Ótimo": ${porcentagemOtimo}%</p>
+                <p>Porcentagem de "Bom": ${porcentagemBom}%</p>
+                <p>Total de Homens: ${totalMasculino}</p>
+                <p>Total de Mulheres: ${totalFeminino}</p>
+                <p>Total de Outros: ${totalOutro}</p>
+            `;
+        }
+    </script>
+    <br><br><br><br><br><br><br><br> <br><br><br><br><br><br><br><br>
+    <footer><p>&copy; 2025 Ana. Todos os direitos reservados.</p></footer>
+</body>
+</html>
