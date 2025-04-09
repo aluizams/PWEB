@@ -1,0 +1,25 @@
+header {
+    background-color: purple;
+    color: white;
+    padding: 10px 20px;
+    
+}
+
+body{
+    font-family: "Segoe UI", 'Segoe UI', Tahoma;
+    margin: 100;
+    padding: 0;
+}
+
+button{
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 1px plum;
+}
+
+footer {
+    background-color: purple;
+    color: #ffffff;
+    padding: 10px 20px;
+    text-align:center;
+    
+}

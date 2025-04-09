@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 9</title>
+    <script src="Atividade9.js" defer></script>
+    <link rel="stylesheet" href="Atividade9.css"> 
+</head>
+<body>
+    <header><h1>Brincando com Números </h1></header>
+    
+
+    <h2>1. Qual é o Maior Número?</h2>
+    <input type="number" id="num1" placeholder="Primeiro Número">
+    <input type="number" id="num2" placeholder="Segundo Número">
+    <input type="number" id="num3" placeholder="Terceiro Número">
+    <button onclick="mostrarMaior()">Encontrar Maior Número</button>
+    <div class="result" id="maiorNumero"></div> 
+
+    <h2>2. Ordem Crescente:</h2>
+    <button onclick="mostrarOrdemCrescente()">Mostrar Ordem Crescente</button>
+    <div class="result" id="resultadoOrdem"></div>
+
+    <h2>3. Verificar Palíndromo:</h2>
+    <input type="text" id="palindromo" placeholder="Digite uma string">
+    <button onclick="verificarPalindromo()">Verificar Palíndromo</button>
+    <div class="result" id="resultadoPalindromo"></div>
+
+    <h2>4. Tipo de Triângulo:</h2>
+    <input type="number" id="lado1" placeholder="Primeiro Lado">
+    <input type="number" id="lado2" placeholder="Segundo Lado">
+    <input type="number" id="lado3" placeholder="Terceiro Lado">
+    <button onclick="mostrarTipoTriangulo()">Ver Tipo de Triângulo</button>
+    <div class="result" id="resultadoTriangulo"></div>
+
+    <script>
+        function mostrarMaior() {
+            const num1 = Number(document.getElementById('num1').value);
+            const num2 = Number(document.getElementById('num2').value);
+            const num3 = Number(document.getElementById('num3').value);
+            const maior = maiorNumero(num1, num2, num3); 
+            document.getElementById('maiorNumero').innerText = `O maior número é: ${maior}`;
+        }
+
+        function maiorNumero(num1, num2, num3) {
+            return Math.max(num1, num2, num3); 
+        }
+
+        function mostrarOrdemCrescente() {
+            const num1 = Number(document.getElementById('num1').value);
+            const num2 = Number(document.getElementById('num2').value);
+            const num3 = Number(document.getElementById('num3').value);
+            const ordem = ordemCrescente(num1, num2, num3);
+            document.getElementById('resultadoOrdem').innerText = `Ordem Crescente: ${ordem.join(', ')}`;
+        }
+
+        function ordemCrescente(num1, num2, num3) {
+            return [num1, num2, num3].sort((a, b) => a - b);
+        }
+
+        function verificarPalindromo() {
+            const str = document.getElementById('palindromo').value;
+            const isPalin = isPalindromo(str);
+            document.getElementById('resultadoPalindromo').innerText = isPalin 
+                ? `"${str}" é um palíndromo.` 
+                : `"${str}" não é um palíndromo.`;
+        }
+
+        function isPalindromo(str) {
+            const normalizedStr = str.toUpperCase().replace(/[^A-Z0-9]/g, '');
+            return normalizedStr === normalizedStr.split('').reverse().join('');
+        }
+
+        function mostrarTipoTriangulo() {
+            const lado1 = Number(document.getElementById('lado1').value);
+            const lado2 = Number(document.getElementById('lado2').value);
+            const lado3 = Number(document.getElementById('lado3').value);
+            const tipo = tipoTriangulo(lado1, lado2, lado3);
+            document.getElementById('resultadoTriangulo').innerText = tipo;
+        }
+
+        function tipoTriangulo(lado1, lado2, lado3) {
+            if (lado1 + lado2 > lado3 && lado1 + lado3 > lado2 && lado2 + lado3 > lado1) {
+                if (lado1 === lado2 && lado2 === lado3) {
+                    return "Triângulo Equilátero";
+                } else if (lado1 === lado2 || lado1 === lado3 || lado2 === lado3) {
+                    return "Triângulo Isósceles";
+                } else {
+                    return "Triângulo Escaleno";
+                }
+            } else {
+                return "Os lados não formam um triângulo.";
+            }
+        }
+    </script>
+<br><br><br><br>
+<footer><p>&copy; 2025 Ana. Todos os direitos reservados.</p></footer>
+</body>
+</html>
