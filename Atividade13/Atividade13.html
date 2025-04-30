@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 13</title>
+
+    <style>
+         body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+        #janela {
+            max-width: 250px;
+            cursor: pointer; 
+            justify-content: center;
+            
+        
+        }
+        h1 {
+            text-align: center;
+            color: palevioletred;
+            font-family:'Segoe UI';
+                }
+    </style>
+</head>
+<body>
+    <h1 id="status">Janela Fechada</h1>
+    <div>
+    <img id="janela" src="janela fechada.PNG" alt="Janela Fechada">
+    </div>
+    <script>
+        const janela = document.getElementById('janela');
+        const status = document.getElementById('status');
+
+        function abrirJanela() {
+        janela.src = 'janela aberta.PNG'; 
+        status.textContent = 'Janela Aberta';
+    }
+
+   
+    function fecharJanela() {
+        janela.src = "janela fechada.PNG"; 
+        status.textContent = 'Janela Fechada';
+    }
+
+   
+    function quebrarJanela() {
+        janela.src = 'janela quebrada.PNG'; 
+        status.textContent = 'Janela Quebrada';
+    }
+
+    janela.addEventListener('mouseover', abrirJanela);
+    janela.addEventListener('mouseout', fecharJanela);
+    janela.addEventListener('click', quebrarJanela);
+    </script>
+   
+</script>
+</body>
+</html>
