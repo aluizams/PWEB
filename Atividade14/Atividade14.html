@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 14</title>
+</head>
+
+<style>
+    body {
+        font-family: Georgia;
+        background-color: #fff0f5;
+        color: #ff69b4;
+        text-align: center;
+        padding: 50px;
+    }
+
+    h1, h2 {
+        font-family:Georgia;
+        color: #ff1493;
+    }
+
+    input[type="text"] {
+        padding: 10px;
+        width: 300px;
+        font-size: 16px;
+        border: 2px solid #ff69b4;
+        border-radius: 5px;
+        color: #ff1493;
+        background-color: #fffafc;
+    }
+
+    label {
+        font-size: 18px;
+        display: block;
+        margin: 10px 0;
+    }
+
+    input[type="radio"] {
+        margin-right: 10px;
+    }
+
+    button {
+        background-color: #ff69b4;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #ff1493;
+    }
+
+    #resultado {
+        margin-top: 30px;
+        font-size: 24px;
+        font-weight: bold;
+        color: #b90a67;
+    }
+
+    
+</style>
+
+<body>
+    <h1>Digite um texto</h1>
+
+<input type="text" id="texto" >
+<br><br>
+
+<label>
+    <input type="radio" name="transformacao" value="maiuscula" id="maiuscula">
+    Maiúsculas
+</label>
+<br>
+
+<label>
+    <input type="radio" name="transformacao" value="minuscula" id="minuscula">
+    Minúsculas
+</label>
+<br><br>
+
+<button id="transformar">Transformar</button>
+
+<h2 id="resultado"></h2>
+
+<script>
+    const textoInput = document.getElementById('texto');
+    const resultado = document.getElementById('resultado');
+    const transformarBtn = document.getElementById('transformar');
+
+    transformarBtn.addEventListener('click', () => {
+        const texto = textoInput.value;
+        if (document.getElementById('maiuscula').checked) {
+            resultado.textContent = texto.toUpperCase(); 
+        } else if (document.getElementById('minuscula').checked) {
+            resultado.textContent = texto.toLowerCase();
+        } else {
+            resultado.textContent = 'escolha uma opção';
+        }
+    });
+</script>
+</body>
+</html>
