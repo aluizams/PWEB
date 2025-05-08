@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos da Fatec Sorocaba</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            color: palevioletred;
+            text-align: center;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        option {
+            padding: 10px;
+        }
+
+        .content {
+            max-width: 500px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .content h3 {
+            color: rosybrown;
+        }
+
+        .content ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .content li {
+            margin: 10px 0;
+        }
+
+        .content .details {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .content .duration,
+        .content .shift,
+        .content .location {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Escolha um curso</h2>
+    <select id="curso" onchange="abrirCurso()">
+        <option value="">-- Selecione --</option>
+        <option value="ads">Análise e Desenvolvimento de Sistemas</option>
+        <option value="logistica">Logística</option>
+        <option value="mecatronica">Mecatrônica Industrial</option>
+        <option value="gestao">Gestão da Tecnologia da Informação</option>
+    </select>
+
+    <script>
+        function abrirCurso() {
+            const select = document.getElementById("curso");
+            const valor = select.value;
+            const texto = select.options[select.selectedIndex].text;
+
+            if (!valor) return; 
+
+            const confirmacao = confirm(`Deseja abrir uma nova página: ${texto}?`);
+
+            if (confirmacao) {
+                let conteudo = '';
+                if (valor === 'ads') {
+                    conteudo = `
+                        <html>
+                            <head><title>${texto}</title></head>
+                            <body>
+                                <div class="content">
+                                    <h3>${texto}</h3>
+                                    <p>Informações sobre o curso de ${texto}:</p>
+                                    <ul>
+                                        <li class="duration">Duração: 4 anos</li>
+                                        <li class="shift">Período: Noturno</li>
+                                        <li class="location">Local: Fatec Sorocaba</li>
+                                    </ul>
+                                    <p class="details">O curso de Análise e Desenvolvimento de Sistemas visa a formação de profissionais capazes de atuar no desenvolvimento de software, análise de sistemas, gestão de projetos de TI e criação de soluções inovadoras para diferentes setores.</p>
+                                </div>
+                            </body>
+                        </html>
+                    `;
+                } else if (valor === 'logistica') {
+                    conteudo = `
+                        <html>
+                            <head><title>${texto}</title></head>
+                            <body>
+                                <div class="content">
+                                    <h3>${texto}</h3>
+                                    <p>Informações sobre o curso de ${texto}:</p>
+                                    <ul>
+                                        <li class="duration">Duração: 4 anos</li>
+                                        <li class="shift">Período: Noturno</li>
+                                        <li class="location">Local: Fatec Sorocaba</li>
+                                    </ul>
+                                    <p class="details">O curso de Logística forma profissionais capacitados para planejar, implementar e controlar operações logísticas em empresas, garantindo a eficiência no transporte, armazenamento e distribuição de produtos.</p>
+                                </div>
+                            </body>
+                        </html>
+                    `;
+                } else if (valor === 'mecatronica') {
+                    conteudo = `
+                        <html>
+                            <head><title>${texto}</title></head>
+                            <body>
+                                <div class="content">
+                                    <h3>${texto}</h3>
+                                    <p>Informações sobre o curso de ${texto}:</p>
+                                    <ul>
+                                        <li class="duration">Duração: 4 anos</li>
+                                        <li class="shift">Período: Noturno</li>
+                                        <li class="location">Local: Fatec Sorocaba</li>
+                                    </ul>
+                                    <p class="details">O curso de Mecatrônica Industrial prepara os alunos para atuarem na integração de sistemas automatizados, desenvolvendo habilidades em mecânica, eletrônica e informática aplicada à indústria.</p>
+                                </div>
+                            </body>
+                        </html>
+                    `;
+                } else if (valor === 'gestao') {
+                    conteudo = `
+                        <html>
+                            <head><title>${texto}</title></head>
+                            <body>
+                                <div class="content">
+                                    <h3>${texto}</h3>
+                                    <p>Informações sobre o curso de ${texto}:</p>
+                                    <ul>
+                                        <li class="duration">Duração: 4 anos</li>
+                                        <li class="shift">Período: Noturno</li>
+                                        <li class="location">Local: Fatec Sorocaba</li>
+                                    </ul>
+                                    <p class="details">O curso de Gestão da Tecnologia da Informação forma profissionais capazes de gerir projetos de TI, implementar soluções tecnológicas e coordenar equipes de trabalho em áreas como infraestrutura, segurança e inovação tecnológica.</p>
+                                </div>
+                            </body>
+                        </html>
+                    `;
+                }
+
+                let novaJanela = window.open("", "", "width=600,height=400");
+                novaJanela.document.write(conteudo);
+                novaJanela.document.close();
+            }
+        }
+    </script>
+</body>
+</html>
