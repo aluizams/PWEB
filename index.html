@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Livros Lidos</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Meus livros lidos</h1>
+    </header>
+
+    <main>
+        <div class="search-add-container">
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Pesquisar por título...">
+                <button id="searchButton"><i class="fas fa-search"></i></button>
+            </div>
+            <button id="addBookBtn" class="btn btn-primary">Adicionar Livro</button>
+        </div>
+
+        <div id="bookList" class="book-grid">
+            
+            <div class="book-card" data-id="1" onclick="openDetailsModalWithData(this)">
+                <img src="images/rules.jpg.png" alt="Capa do livro Rules for Romance">
+                <h3>Rules for Romance</h3>
+                <p class="author">Olivia Nadal</p>
+                <div class="rating">
+                    <span class="star filled">★</span>
+                    <span class="star filled">★</span>
+                    <span class="star filled">★</span>
+                    <span class="star">☆</span>
+                    <span class="star">☆</span>
+                </div>
+                <button class="options-btn" data-id="1" onclick="event.stopPropagation(); console.log('Options for book 1');">...</button>
+            </div>
+            <div class="book-card" data-id="2" onclick="openDetailsModalWithData(this)">
+                <img src="images/another.jpg.png" alt="Capa do livro Another Hot Summer">
+                <h3>Another Hot Summer</h3>
+                <p class="author">Olivia Nadal</p>
+                <div class="rating">
+                    <span class="star filled">★</span>
+                    <span class="star filled">★</span>
+                    <span class="star filled">★</span>
+                    <span class="star filled">★</span>
+                    <span class="star">☆</span>
+                </div>
+                <button class="options-btn" data-id="2" onclick="event.stopPropagation(); console.log('Options for book 2');">...</button>
+            </div>
+            <div class="book-card" data-id="3" onclick="openDetailsModalWithData(this)">
+                <img src="images/starborn.jpg.png" alt="Capa do livro Starborn">
+                <h3>Starborn</h3>
+                <p class="author">Cory LeBlanc</p>
+                <div class="rating">
+                    <span class="star filled">★</span>
+                    <span class="star filled">★</span>
+                    <span class="star filled">★</span>
+                    <span class="star filled">★</span>
+                    <span class="star filled">★</span>
+                </div>
+                <button class="options-btn" data-id="3" onclick="event.stopPropagation(); console.log('Options for book 3');">...</button>
+            </div>
+            <div class="book-card" data-id="4" onclick="openDetailsModalWithData(this)">
+                <img src="images/love.jpg.png" alt="Capa do livro Love Right Next Door">
+                <h3>Love Right Next Door</h3>
+                <p class="author">Olivia Nadal</p>
+                <div class="rating">
+                    <span class="star filled">★</span>
+                    <span class="star filled">★</span>
+                    <span class="star">☆</span>
+                    <span class="star">☆</span>
+                    <span class="star">☆</span>
+                </div>
+                <button class="options-btn" data-id="4" onclick="event.stopPropagation(); console.log('Options for book 4');">...</button>
+            </div>
+        </div>
+    </main>
+
+    <div id="bookDetailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeDetailsModal()">×</span>
+            <div class="modal-details-layout">
+                <div class="modal-details-left">
+                    <div id="modalBookCoverContainer"><img id="modalBookCover" src="images/another.jpg.png" alt="Capa do livro"></div>
+                    <button id="deleteBookModalBtn" class="btn btn-danger btn-full-width">Excluir este livro</button>
+                    <div class="book-meta">
+                        <p><strong>Nota:</strong> <span id="modalBookRating">★★★★☆</span></p>
+                        <p><strong>Adicionado em:</strong> <span id="modalBookDateAdded">12/04/2022</span></p>
+                        <p><strong>Gênero:</strong> <span id="modalBookGenre">Romance</span></p>
+                        <p><strong>ISBN-13:</strong> <span id="modalBookISBN13">97838793495790</span></p>
+                        <p><strong>ISBN-10:</strong> <span id="modalBookISBN10">8973478841</span></p>
+                        <p><strong>Ano:</strong> <span id="modalBookYear">2019</span></p>
+                        <p><strong>Páginas:</strong> <span id="modalBookPages">304</span></p>
+                        <p><strong>Idioma:</strong> <span id="modalBookLanguage">Português</span></p>
+                        <p><strong>Editora:</strong> <span id="modalBookPublisher">Versus</span></p>
+                    </div>
+                    <button id="editBookModalBtnDetails" class="btn btn-primary btn-full-width btn-edit-book-details">Editar</button>
+                </div>
+                <div class="modal-details-right">
+                    <h2 id="modalBookTitle">Another Hot Summer</h2>
+                    <p id="modalBookAuthor" class="modal-author-name">Olivia Nadal</p>
+                    
+                    <p class="section-label"><strong>Sinopse:</strong></p>
+                    <p id="modalBookSynopsis">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempus non quam non sodales. Duis ac aliquet dui, fermentum maximus risus. Phasellus dictum euismod metus quis feugiat. Duis at erat justo. Nulla lobortis tortor non erat tincidunt laoreet. Mauris vitae odio non lectus vulputate pretium. Phasellus rhoncus ullamcorper justo ut maximus. Quisque sed posuere tortor. Nunc sit amet augue quis lectus pulvinar varius a eget lorem. Duis venenatis nulla id magna placerat lacinia. Phasellus in felis vitae odio lobortis dignissim sed sit amet est. Curabitur suscipit nunc arcu, venenatis feugiat tellus auctor sed. Integer fringilla nibh sed accumsan volutpat. Aliquam dictum ultrices velit eleifend iaculis. Suspendisse suscipit, justo non molestie lacinia, tortor sem luctus lectus, at accumsan nulla diam in sapien.</p>
+                    
+                    <div class="review-heading-container">
+                        <p class="section-label"><strong>Resenha:</strong></p>
+                        <span class="edit-review-icon"><i class="fas fa-pencil-alt"></i></span>
+                    </div>
+                    <p id="modalBookReview" class="user-review">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempus non quam non sodales. Duis ac aliquet dui, fermentum maximus risus. Phasellus dictum euismod metus quis feugiat. Duis at erat justo. Nulla lobortis tortor non erat tincidunt laoreet. Mauris vitae odio non lectus vulputate pretium.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+    <div id="addEditBookModal" class="modal">
+        <div class="modal-content form-modal-content">
+            <span class="close-button" onclick="closeAddEditModal()">×</span>
+            <h2 id="modalFormTitle">Editar</h2>
+            <form id="bookForm">
+                <input type="hidden" id="bookId">
+
+                <label for="titulo">Título:</label>
+                <input type="text" id="titulo" name="titulo" required>
+
+                <label for="autor">Autor:</label>
+                <input type="text" id="autor" name="autor" required>
+
+                <label for="anoPublicacao">Ano de Publicação:</label>
+                <input type="number" id="anoPublicacao" name="anoPublicacao">
+
+                <label for="genero">Gênero:</label>
+                <input type="text" id="genero" name="genero">
+
+                <label for="isbn">ISBN:</label>
+                <input type="text" id="isbn" name="isbn">
+
+                <label for="paginas">Páginas:</label>
+                <input type="number" id="paginas" name="paginas">
+
+                <label for="idioma">Idioma:</label>
+                <input type="text" id="idioma" name="idioma"> 
+
+                <label for="editora">Editora:</label>
+                <input type="text" id="editora" name="editora">
+
+                <label for="capaUrl">URL da Capa (opcional):</label>
+                <input type="url" id="capaUrl" name="capaUrl" placeholder="capa.jpg">
+
+                <label for="sinopse">Sinopse:</label>
+                <textarea id="sinopse" name="sinopse" rows="4"></textarea>
+
+                <label for="notaUsuario">Nota (0-5):</label>
+                <input type="number" id="notaUsuario" name="notaUsuario" min="0" max="5" step="0.1">
+
+                <label for="resenhaUsuario">Sua Resenha (opcional):</label>
+                <textarea id="resenhaUsuario" name="resenhaUsuario" rows="4"></textarea>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeAddEditModal()">VOLTAR</button> 
+                    <button type="submit" class="btn btn-primary">SALVAR</button> 
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
